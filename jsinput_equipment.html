@@ -40,14 +40,14 @@
   </select>
 
   <script>
-    const dropdown = document.getElementById('dropdown');
-
-    dropdown.addEventListener('change', function () {
-      const selectedValue = this.value;
-
-      if (selectedValue) {
-        alert(`Vous avez choisi : ${this.options[this.selectedIndex].text}`);
-      }
+    document.addEventListener('DOMContentLoaded', function () {
+      const dropdown = document.getElementById('dropdown');
+      dropdown.addEventListener('change', function () {
+        const selectedValue = this.value;
+        if (selectedValue) {
+          alert(`Vous avez choisi : ${this.options[this.selectedIndex].text}`);
+        }
+      });
     });
   </script>
 </body>
