@@ -9,7 +9,7 @@
       padding: 10px;
     }
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin-bottom: 12px;
     }
     label {
@@ -18,7 +18,7 @@
     }
     select {
       margin-top: 8px;
-      padding: 4px;
+      padding: 6px;
       font-size: 1rem;
       font-family: inherit;
       width: 100%;
@@ -39,23 +39,49 @@
   <label for="dropdown">Sélectionnez un équipement :</label>
   <select id="dropdown">
     <option value="">-- Choisissez une option --</option>
-    <option value="extracteur">Extracteur centrifuge</option>
-    <option value="filtre">Filtre à sable</option>
-    <option value="disque">Réacteur à disque tournant</option>
+    <option value="Microréacteur">Microréacteur</option>
+    <option value="Extracteur centrifuge">Extracteur centrifuge</option>
+    <option value="Réacteur à disque tournant">Réacteur à disque tournant</option>
+    <option value="Colonne garnie rotative">Colonne garnie rotative</option>
   </select>
 
   <div id="selection-result"></div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const dropdown = document.getElementById('dropdown');
-      const resultDiv = document.getElementById('selection-result');
+    let state = {
+      selectedChoice: ""
+    };
 
-      dropdown.addEventListener('change', function () {
-        const selectedText = this.options[this.selectedIndex].text;
+    const dropdown = document.getElementById('dropdown');
+    const resultDiv = document.getElementById('selection-result');
 
-        if (this.value) {
-          resultDiv.textContent = `✅ Équipement sélectionné : ${selectedText}`;
-        } else {
-          resultDiv.textContent = '';
-        }
+    dropdown.addEventListener('change', function () {
+      state.selectedChoice = this.value;
+      updateDisplay();
+    });
+
+    function updateDisplay() {
+      if (state.selectedChoice) {
+        resultDiv.textContent = `✅ Équipement sélectionné : ${state.selectedChoice}`;
+      } else {
+        resultDiv.textContent = '';
+      }
+    }
+
+    // JSInput bindings for edX
+    window.JSInputEquipment = {
+      getState: function () {
+        return JSON.stringify(state);
+      },
+      setState: function (newState) {
+        state = JSON.parse(newState);
+        dropdown.value = state.selectedChoice || "";
+        updateDisplay();
+      },
+      getGrade: function () {
+        return JSON.stringify({ answer: state.selectedChoice });
+      }
+    };
+  </script>
+</body>
+</html>
