@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Choix de l’équipement adapté</title>
-    <script type="text/javascript">
-      var JSInputEquipment = {
-        getState: function() {
-          return JSON.stringify({ selectedChoice: document.getElementById("dropdown").value });
-        },
-        setState: function(stateStr) {
-          var state = JSON.parse(stateStr);
-          document.getElementById("dropdown").value = state.selectedChoice;
-        },
-        getGrade: function() {
-          var selected = document.getElementById("dropdown").value;
-          console.log("Réponse sélectionnée :", selected);  // pour test/debug
-          return JSON.stringify({ answer: selected });
-        }
-      };
-    </script>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 10px;
+<head>
+  <meta charset="UTF-8">
+  <title>Test JSInputEquipment</title>
+  <script>
+    var JSInputEquipment = {
+      getState: function() {
+        return JSON.stringify({
+          selectedChoice: document.getElementById("dropdown").value
+        });
+      },
+      setState: function(stateStr) {
+        var state = JSON.parse(stateStr);
+        document.getElementById("dropdown").value = state.selectedChoice;
+      },
+      getGrade: function() {
+        var selected = document.getElementById("dropdown").value;
+        console.log("Réponse sélectionnée :", selected);
+        return JSON.stringify({ answer: selected });
       }
-      label {
-        font-weight: bold;
-      }
-      select {
-        margin-top: 8px;
-        padding: 4px;
-        font-size: 1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <label for="dropdown">Sélectionnez un équipement :</label><br/>
-    <select id="dropdown">
-      <option value="">-- Faites votre choix --</option>
-      <option value="Microréacteur">Microréacteur</option>
-      <option value="Extracteur centrifuge">Extracteur centrifuge</option>
-      <option value="Réacteur à disque tournant">Réacteur à disque tournant</option>
-      <option value="Colonne garnie rotative">Colonne garnie rotative</option>
-    </select>
-  </body>
+    };
+  </script>
+</head>
+<body>
+  <label for="dropdown">Choisissez un équipement :</label><br>
+  <select id="dropdown">
+    <option value="">-- Choisir --</option>
+    <option value="Microréacteur">Microréacteur</option>
+    <option value="Extracteur centrifuge">Extracteur centrifuge</option>
+    <option value="Réacteur à disque tournant">Réacteur à disque tournant</option>
+    <option value="Colonne garnie rotative">Colonne garnie rotative</option>
+  </select>
+</body>
 </html>
