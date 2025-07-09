@@ -15,12 +15,18 @@
       font-family: inherit;
       width: 100%;
       box-sizing: border-box;
+      border: 1px solid #333; /* optional: helps visibility */
+      background-color: white; /* ensures it's not transparent */
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
     }
   </style>
 </head>
 <body>
   <h1>Choix de l’équipement adapté</h1>
-  <label for="dropdown">Sélectionnez un équipement :</label><br>
+  <label for="dropdown">Sélectionnez un équipement :</label>
   <select id="dropdown">
     <option value="">-- Choisissez une option --</option>
     <option value="reacteur">Réacteur à disque tournant</option>
