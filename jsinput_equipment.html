@@ -6,6 +6,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      padding: 10px;
     }
     h1 {
       font-size: 1.5rem;
@@ -37,5 +38,17 @@
     <option value="filtre">Filtre à sable</option>
     <option value="disque">Réacteur à disque tournant</option>
   </select>
+
+  <script>
+    const dropdown = document.getElementById('dropdown');
+
+    dropdown.addEventListener('change', function () {
+      const selectedValue = this.value;
+
+      if (selectedValue) {
+        alert(`Vous avez choisi : ${this.options[this.selectedIndex].text}`);
+      }
+    });
+  </script>
 </body>
 </html>
