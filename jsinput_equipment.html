@@ -26,6 +26,11 @@
       border: 1px solid #333;
       background-color: white;
     }
+    #selection-result {
+      margin-top: 16px;
+      font-weight: bold;
+      color: #0066cc;
+    }
   </style>
 </head>
 <body>
@@ -39,16 +44,18 @@
     <option value="disque">Réacteur à disque tournant</option>
   </select>
 
+  <div id="selection-result"></div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const dropdown = document.getElementById('dropdown');
+      const resultDiv = document.getElementById('selection-result');
+
       dropdown.addEventListener('change', function () {
-        const selectedValue = this.value;
-        if (selectedValue) {
-          alert(`Vous avez choisi : ${this.options[this.selectedIndex].text}`);
+        const selectedText = this.options[this.selectedIndex].text;
+
+        if (this.value) {
+          resultDiv.textContent = `✅ Équipement sélectionné : ${selectedText}`;
+        } else {
+          resultDiv.textContent = '';
         }
-      });
-    });
-  </script>
-</body>
-</html>
