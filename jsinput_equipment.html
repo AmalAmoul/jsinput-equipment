@@ -2,58 +2,30 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test JSInputEquipment</title>
-  <script>
-    var JSInputEquipment = {
-      getState: function() {
-        const selected = document.getElementById("dropdown").value;
-        return JSON.stringify({ selectedChoice: selected });
-      },
-      setState: function(stateStr) {
-        var state = JSON.parse(stateStr);
-        document.getElementById("dropdown").value = state.selectedChoice;
-      },
-      getGrade: function() {
-        var selected = document.getElementById("dropdown").value;
-        console.log("Réponse sélectionnée :", selected);
-        return JSON.stringify({ answer: selected });
-      }
-    };
-
-    // 🔁 Activer la détection de changement pour EdX
-    window.addEventListener("load", function () {
-      const dropdown = document.getElementById("dropdown");
-      dropdown.addEventListener("change", function () {
-        if (parent !== window) {
-          parent.postMessage("inputValueChanged", "*");
-        }
-      });
-    });
-  </script>
-
+  <title>Choix de l’équipement adapté</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 10px;
     }
-    label {
-      font-weight: bold;
-    }
     select {
       margin-top: 8px;
       padding: 4px;
       font-size: 1rem;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
-  <label for="dropdown">Choisissez un équipement :</label><br>
+  <h1>Choix de l’équipement adapté</h1>
+  <label for="dropdown">Sélectionnez un équipement :</label><br>
   <select id="dropdown">
-    <option value="">-- Faites votre choix --</option>
-    <option value="Microréacteur">Microréacteur</option>
-    <option value="Extracteur centrifuge">Extracteur centrifuge</option>
-    <option value="Réacteur à disque tournant">Réacteur à disque tournant</option>
-    <option value="Colonne garnie rotative">Colonne garnie rotative</option>
+    <option value="">-- Choisissez une option --</option>
+    <option value="reacteur">Réacteur à disque tournant</option>
+    <option value="filtre">Filtre à sable</option>
+    <option value="membrane">Filtre à membrane</option>
   </select>
 </body>
 </html>
