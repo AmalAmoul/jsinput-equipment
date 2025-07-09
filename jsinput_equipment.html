@@ -14,6 +14,7 @@
         },
         getGrade: function() {
           var selected = document.getElementById("dropdown").value;
+          console.log("Réponse sélectionnée :", selected);  // pour test/debug
           return JSON.stringify({ answer: selected });
         }
       };
@@ -44,4 +45,3 @@
     </select>
   </body>
 </html>
-Ajout du fichier HTML pour l’exercice edX
